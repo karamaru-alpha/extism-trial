@@ -1,4 +1,5 @@
 Simple
+==
 
 This is an example of code that calls a wasm plugin (vowel counting) created in go from rust.
 
