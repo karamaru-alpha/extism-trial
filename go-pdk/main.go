@@ -6,6 +6,9 @@ import (
 	"github.com/extism/go-pdk"
 )
 
+//export host_function
+func host_function()
+
 //export count_vowels
 func count_vowels() int32 {
 	input := pdk.Input()
@@ -19,11 +22,13 @@ func count_vowels() int32 {
 		}
 	}
 
-	output := fmt.Sprintf(`{"count": %d, "input": "%s"}`, count, string(input))
+	output := fmt.Sprintf(`{"vowel_count": %d, "input": "%s"}`, count, string(input))
 	mem := pdk.AllocateString(output)
 
 	// zero-copy output to host
 	pdk.OutputMemory(mem)
+
+	host_function()
 
 	return 0
 }
